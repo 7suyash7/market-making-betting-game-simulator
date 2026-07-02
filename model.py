@@ -154,8 +154,16 @@ def inventory_skewed_quotes(fair_value, spread_width, inventory, skew_strength):
         "ask": float(skewed_mid + half_spread)
     }
 
-# Step 11 - update_fair_value_from_trade (not yet solved)
-# TODO: implement
+# Step 11 - update_fair_value_from_trade
+def update_fair_value_from_trade(fair_value, side, bid, ask, adjustment):
+    half_spread = (ask - bid) / 2
+    step = adjustment * half_spread
+
+    if side == "buy":
+        return float(fair_value + step)
+    
+    elif side == "sell":
+        return float(fair_value - step)
 
 # Step 12 - update_remaining_card_value (not yet solved)
 # TODO: implement
