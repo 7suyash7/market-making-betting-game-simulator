@@ -142,8 +142,17 @@ def adverse_selection_loss(fair_value, bid, ask, informed_values, informed_proba
 def uncertainty_spread(base_spread, uncertainty):
     return float(base_spread + uncertainty)
 
-# Step 10 - inventory_skewed_quotes (not yet solved)
-# TODO: implement
+# Step 10 - inventory_skewed_quotes
+def inventory_skewed_quotes(fair_value, spread_width, inventory, skew_strength):
+    half_spread = spread_width / 2
+
+    shift = skew_strength * inventory
+    skewed_mid = fair_value - shift
+
+    return {
+        "bid": float(skewed_mid - half_spread),
+        "ask": float(skewed_mid + half_spread)
+    }
 
 # Step 11 - update_fair_value_from_trade (not yet solved)
 # TODO: implement
