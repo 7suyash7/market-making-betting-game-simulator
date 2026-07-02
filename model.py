@@ -250,6 +250,13 @@ def run_market_making_episode(true_value, counterparty_sides, initial_fair_value
         "history": history
     }
 
-# Step 14 - summarize_episode_pnls (not yet solved)
-# TODO: implement
+# Step 14 - summarize_episode_pnls
+def summarize_episode_pnls(pnls):
+    arr = np.asarray(pnls, dtype = float)
+
+    return {
+        "mean": float(arr.mean()),
+        "std": float(arr.std()),
+        "worst": float(arr.min())
+    }
 
